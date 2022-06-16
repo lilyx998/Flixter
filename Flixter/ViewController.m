@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation ViewController
@@ -22,6 +24,17 @@
     
     self.tableView.dataSource = self;
     
+    [self fetchMovies];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init]; // initializes refreshControl
+    
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
+    // when refreshControl is triggered, will call fetchMovies
+    
+    [self.tableView addSubview:self.refreshControl]; // attached refreshControl to tableView; so when tableView is scrolled down, refreshControl will trigger
+}
+
+- (void) fetchMovies{
     // Do any additional setup after loading the view.
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=16503f820f445513ebe949269c4a4684"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -39,7 +52,8 @@
                // TODO: Reload your table view data
                [self.tableView reloadData];
            }
-       }];
+        [self.refreshControl endRefreshing];
+    }];
     
     [task resume];
     
