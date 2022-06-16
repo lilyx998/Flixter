@@ -7,11 +7,12 @@
 
 #import "ViewController.h"
 #import "MovieCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ViewController () <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *myArray;
+@property (nonatomic, strong) NSArray *movies;
 @end
 
 @implementation ViewController
@@ -32,11 +33,11 @@
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                NSLog(@"%@", dataDictionary);// log an object with the %@ formatter.
-               self.myArray = dataDictionary[@"results"];
+               self.movies = dataDictionary[@"results"];
                // TODO: Get the array of movies
                // TODO: Store the movies in a property to use elsewhere
                // TODO: Reload your table view data
-               [self.tableView reloadData ];
+               [self.tableView reloadData];
            }
        }];
     
@@ -45,16 +46,30 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.myArray.count;
+    return self.movies.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseMovieCell" forIndexPath:indexPath];
-    cell.titleLabel.text = @"heyyy";
-    cell.synopsisLabel.text = @"weee";
-//    cell.movieImage.image = ;
+    NSDictionary *movie = self.movies[indexPath.row];
+    
+    // Title
+    cell.titleLabel.text = movie[@"title"];
+    
+    // Synopsis
+    cell.synopsisLabel.text = movie[@"overview"];
+    
+    // Image
+    NSString *urlPrefix = @"https://image.tmdb.org/t/p/w500";
+    NSString *urlSuffix = movie[@"poster_path"];
+    NSString *urlString = [urlPrefix stringByAppendingString:urlSuffix];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    [cell.posterImage setImageWithURL:url];
     return cell;
 }
+
+//func refreshControl
 
 
 
