@@ -27,10 +27,6 @@ The following **optional** features are implemented:
 - [ ] Customize the UI.
 - [ ] Run your app on a real device.
 
-The following **additional** features are implemented:
-
-- [ ] List anything else that you can get done to improve the app functionality!
-
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. Some of the physical layouts have a hardcoded size, so I would like to find a way to make the size of the images, labels, etc. scale to the size of the device being used. 
