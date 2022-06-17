@@ -92,13 +92,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <activityIndicatorView key="tableFooterView" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="Ln8-Ed-eJe">
-                                    <rect key="frame" x="0.0" y="348" width="414" height="896"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for a movie" id="O3J-o6-j4B">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseMovieCell" rowHeight="281" id="DJQ-F3-bxc" customClass="ListViewCell">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="281"/>
+                                        <rect key="frame" x="0.0" y="88.5" width="414" height="281"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DJQ-F3-bxc" id="UDN-hh-VVr">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="281"/>
@@ -140,7 +141,7 @@
                     <tabBarItem key="tabBarItem" title="List View" id="OTz-Bb-SE5"/>
                     <navigationItem key="navigationItem" id="NOv-r9-J45"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="Ln8-Ed-eJe" id="h9I-6V-RbK"/>
+                        <outlet property="searchBar" destination="O3J-o6-j4B" id="Vbo-VQ-UEk"/>
                         <outlet property="tableView" destination="ayW-U7-2WW" id="Mee-oc-UQ1"/>
                     </connections>
                 </viewController>
