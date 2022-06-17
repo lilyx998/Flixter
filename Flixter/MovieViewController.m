@@ -15,10 +15,13 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
 @implementation MovieViewController
+
+- (void) check
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,7 +30,11 @@
     
     [self fetchMovies];
     
+    [self.activityIndicator stopAnimating];
+    
     self.refreshControl = [[UIRefreshControl alloc] init]; // initializes refreshControl
+    
+    [self.activityIndicator startAnimating];
     
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     // when refreshControl is triggered, will call fetchMovies
