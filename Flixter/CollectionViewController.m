@@ -8,6 +8,7 @@
 #import "CollectionViewController.h"
 #import "CollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
 
 @interface CollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -93,6 +94,14 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.movies.count;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSIndexPath *indexPath = [self.collectionView indexPathsForSelectedItems][0];
+    
+    NSDictionary *dataToPass = self.movies[indexPath.row];
+    DetailsViewController *detailsVC = [segue destinationViewController];
+    detailsVC.data = dataToPass;
 }
 
 @end

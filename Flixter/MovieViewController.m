@@ -130,8 +130,6 @@
         }];
         self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
         
-        NSLog(@"%@", self.filteredData);
-        
     }
     else {
         self.filteredData = self.movies;

@@ -20,7 +20,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="1Z2-iq-V8y" kind="relationship" relationship="viewControllers" id="cLM-FF-JLX"/>
-                        <segue destination="jsg-DZ-e4O" kind="relationship" relationship="viewControllers" id="Inr-uz-k7m"/>
+                        <segue destination="o20-2n-1oA" kind="relationship" relationship="viewControllers" id="of2-xg-FjP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qJ-oj-fNm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -28,9 +28,26 @@
             <point key="canvasLocation" x="-3219" y="-1175"/>
         </scene>
         <!--Movies-->
+        <scene sceneID="y6H-97-YT6">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XzB-Sm-KII" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="o20-2n-1oA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Movies" id="C2g-db-PM7"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X5h-Is-k2M">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jsg-DZ-e4O" kind="relationship" relationship="rootViewController" id="rVa-Fp-bZW"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-2113" y="-717"/>
+        </scene>
+        <!--Collection VC-->
         <scene sceneID="2T3-KG-UV4">
             <objects>
-                <viewController id="jsg-DZ-e4O" customClass="CollectionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Collection View" title="Collection VC" id="jsg-DZ-e4O" customClass="CollectionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d7C-s5-OL8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +80,7 @@
                                         <size key="customSize" width="129" height="173"/>
                                         <connections>
                                             <outlet property="posterImage" destination="s5m-Lo-Yhz" id="wn2-hl-Esl"/>
+                                            <segue destination="ba4-qh-sFN" kind="show" id="YnV-e4-abM"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -72,13 +90,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Movies" id="KFb-7u-jeH"/>
+                    <navigationItem key="navigationItem" id="MGO-u7-HKg"/>
                     <connections>
                         <outlet property="collectionView" destination="Lqa-yZ-eNB" id="gp9-nM-FQx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIU-7j-WCA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2220.289855072464" y="-659.59821428571422"/>
+            <point key="canvasLocation" x="-1217" y="-717"/>
         </scene>
         <!--Movie List VC-->
         <scene sceneID="SaD-Kg-kDg">
@@ -201,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brn-cQ-jco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-433" y="-1688"/>
+            <point key="canvasLocation" x="-48" y="-1244"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="fdN-MB-a9N">
@@ -221,6 +240,9 @@
             <point key="canvasLocation" x="-2078" y="-1687"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YnV-e4-abM"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
