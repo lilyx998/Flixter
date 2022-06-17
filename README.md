@@ -40,9 +40,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-https://imgur.com/a/qh2hkqd
-
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/OK96uVU' title='Required Features Demo' width='' alt='Required Features Demo' />
 
 GIF created with [Kap](https://getkap.co/).
 
