@@ -33,11 +33,11 @@
     
     [self fetchMovies];
     
-    [self.activityIndicator stopAnimating];
+    [self.activityIndicator startAnimating];
     
     self.refreshControl = [[UIRefreshControl alloc] init]; // initializes refreshControl
     
-    [self.activityIndicator startAnimating];
+//    [self.activityIndicator stopAnimating];
     
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     // when refreshControl is triggered, will call fetchMovies
@@ -76,6 +76,7 @@
                 NSLog(@"%@", [error localizedDescription]);
             }
             else {
+                [self.activityIndicator stopAnimating];
                 NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers   error:nil];
 //                NSLog(@"%@", dataDictionary);// log an object with the %@ formatter.
                 self.movies = dataDictionary[@"results"];

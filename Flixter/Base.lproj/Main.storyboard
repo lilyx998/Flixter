@@ -153,6 +153,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sPl-YU-Nx1">
+                                <rect key="frame" x="150" y="347" width="114" height="203"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mEj-1I-UZm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -160,13 +164,14 @@
                     <tabBarItem key="tabBarItem" title="List View" id="OTz-Bb-SE5"/>
                     <navigationItem key="navigationItem" id="NOv-r9-J45"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="sPl-YU-Nx1" id="H7B-Pk-wYW"/>
                         <outlet property="searchBar" destination="O3J-o6-j4B" id="Vbo-VQ-UEk"/>
                         <outlet property="tableView" destination="ayW-U7-2WW" id="Mee-oc-UQ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMO-Rl-R7l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1217" y="-1688"/>
+            <point key="canvasLocation" x="-1217.3913043478262" y="-1688.1696428571429"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="aAx-cQ-bxN">
@@ -241,7 +246,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YnV-e4-abM"/>
+        <segue reference="TbR-qc-dzw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
