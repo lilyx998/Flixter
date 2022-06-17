@@ -39,10 +39,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/qh2hkqd"  ><a href="//imgur.com/a/qh2hkqd">Required Feature Demo</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-
-GIF created with [Kap](https://getkap.co/).
+<img src='https://im3.ezgif.com/tmp/ezgif-3-1bca2eeb70.gif' title='Required Features Demo' width='' alt='Video Walkthrough' />
 
 ## Notes
 
