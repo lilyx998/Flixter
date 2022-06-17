@@ -39,6 +39,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+![](https://im3.ezgif.com/tmp/ezgif-3-1bca2eeb70.gif)
 <img src='https://im3.ezgif.com/tmp/ezgif-3-1bca2eeb70.gif' title='Required Features Demo' width='' alt='Video Walkthrough' />
 
 ## Notes
