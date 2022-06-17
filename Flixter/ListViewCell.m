@@ -5,9 +5,9 @@
 //  Created by Lily Yang on 6/15/22.
 //
 
-#import "MovieCell.h"
+#import "ListViewCell.h"
 
-@implementation MovieCell
+@implementation ListViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

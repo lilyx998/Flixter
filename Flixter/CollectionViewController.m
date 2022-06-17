@@ -1,43 +1,27 @@
 //
-//  ViewController.m
+//  CollectionViewController.m
 //  Flixter
 //
-//  Created by Lily Yang on 6/15/22.
+//  Created by Lily Yang on 6/17/22.
 //
 
-#import "MovieViewController.h"
-#import "ListViewCell.h"
+#import "CollectionViewController.h"
+#import "CollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
-#import "DetailsViewController.h"
 
-@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *movies;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
-@implementation MovieViewController
+@implementation CollectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView.dataSource = self;
-    
-    [self fetchMovies];
-    
-    [self.activityIndicator stopAnimating];
-    
-    self.refreshControl = [[UIRefreshControl alloc] init]; // initializes refreshControl
-    
-    [self.activityIndicator startAnimating];
-    
-    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
-    // when refreshControl is triggered, will call fetchMovies
-    
-    [self.tableView addSubview:self.refreshControl]; // attached refreshControl to tableView; so when tableView is scrolled down, refreshControl will trigger
+    self.collectionView.dataSource = self; 
+    [self fetchMovies]; 
 }
 
 - (void) fetchMovies{
@@ -77,28 +61,27 @@
                 // TODO: Get the array of movies
                 // TODO: Store the movies in a property to use elsewhere
                 // TODO: Reload your table view data
-                [self.tableView reloadData];
+                [self.collectionView reloadData];
             }
-        [self.refreshControl endRefreshing];
     }];
     [task resume];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
-}
+/*
+#pragma mark - Navigation
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseMovieCell" forIndexPath:indexPath];
-    NSDictionary *movie = self.movies[indexPath.row];
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCell" forIndexPath:indexPath];
     
-    // Title
-    cell.titleLabel.text = movie[@"title"];
+    NSDictionary *movie = self.movies[indexPath.item];
     
-    // Synopsis
-    cell.synopsisLabel.text = movie[@"overview"];
-    
-    // Image
     NSString *urlPrefix = @"https://image.tmdb.org/t/p/w500";
     NSString *urlSuffix = movie[@"poster_path"];
     NSString *urlString = [urlPrefix stringByAppendingString:urlSuffix];
@@ -108,19 +91,8 @@
     return cell;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    
-    NSDictionary *dataToPass = self.movies[indexPath.row];
-    DetailsViewController *detailsVC = [segue destinationViewController];
-    detailsVC.data = dataToPass;
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.movies.count;
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
-
-
-
 
 @end
