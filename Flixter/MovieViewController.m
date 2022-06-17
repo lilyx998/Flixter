@@ -5,11 +5,12 @@
 //  Created by Lily Yang on 6/15/22.
 //
 
-#import "ViewController.h"
+#import "MovieViewController.h"
 #import "MovieCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
 
-@interface ViewController () <UITableViewDataSource>
+@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
@@ -17,7 +18,7 @@
 
 @end
 
-@implementation ViewController
+@implementation MovieViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -83,7 +84,17 @@
     return cell;
 }
 
-//func refreshControl
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    NSDictionary *dataToPass = self.movies[indexPath.row];
+    DetailsViewController *detailsVC = [segue destinationViewController];
+    detailsVC.data = dataToPass;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 
 
 
