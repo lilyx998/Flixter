@@ -40,7 +40,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://imgur.com/OK96uVU' title='Required Features Demo' width='' alt='Required Features Demo' />
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/qh2hkqd"  ><a href="//imgur.com/a/qh2hkqd">Required Feature Demo</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 GIF created with [Kap](https://getkap.co/).
 
