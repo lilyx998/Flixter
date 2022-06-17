@@ -21,8 +21,6 @@
 
 @implementation MovieViewController
 
-- (void) check
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,18 +46,39 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-           if (error != nil) {
-               NSLog(@"%@", [error localizedDescription]);
-           }
-           else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//               NSLog(@"%@", dataDictionary);// log an object with the %@ formatter.
-               self.movies = dataDictionary[@"results"];
-               // TODO: Get the array of movies
-               // TODO: Store the movies in a property to use elsewhere
-               // TODO: Reload your table view data
-               [self.tableView reloadData];
-           }
+            if(error.code == NSURLErrorNotConnectedToInternet){
+                UIAlertController * alert = [UIAlertController
+                                             alertControllerWithTitle:@"Cannot Get Movies"
+                                             message:@"The Internet connection appears to be offline."
+                                             preferredStyle:UIAlertControllerStyleAlert];
+
+                //Add Buttons
+
+                UIAlertAction* yesButton = [UIAlertAction
+                                            actionWithTitle:@"Try Again"
+                                            style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction * action) {
+                                                [self fetchMovies]; // ask Naveen?
+                                            }];
+
+                //Add your buttons to alert controller
+
+                [alert addAction:yesButton];
+
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            if (error != nil) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            else {
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers   error:nil];
+//                NSLog(@"%@", dataDictionary);// log an object with the %@ formatter.
+                self.movies = dataDictionary[@"results"];
+                // TODO: Get the array of movies
+                // TODO: Store the movies in a property to use elsewhere
+                // TODO: Reload your table view data
+                [self.tableView reloadData];
+            }
         [self.refreshControl endRefreshing];
     }];
     
